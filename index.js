@@ -22,8 +22,8 @@ function playRound() {
   }
 }
 
-console.log(playRound());
+function game() {
+  for (var i = 1; i < 6; i++) playRound(i);
+}
 
-//Rock wins against scissors.
-//Scissors win against paper.
-//Paper wins against rock.
+game();
