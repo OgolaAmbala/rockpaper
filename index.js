@@ -1,13 +1,13 @@
-let guess = ["rock", "paper", "scissors"];
+const guess = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
-  let answer = Math.floor(Math.random() * guess.length);
+  const answer = Math.floor(Math.random() * guess.length);
   return guess[answer];
 }
 
 function playRound() {
-  let playerSelection = prompt("Rock, Paper, Scissors").toLowerCase();
-  let computerSelection = getComputerChoice();
+  const playerSelection = prompt("Rock, Paper, Scissors").toLowerCase();
+  const computerSelection = getComputerChoice();
 
   if (playerSelection === computerSelection) {
     return "It's a tie!";
