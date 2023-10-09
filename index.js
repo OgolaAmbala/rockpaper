@@ -1,20 +1,19 @@
-const guess = ["rock", "paper", "scissors"];
+const choices = ["rock", "paper", "scissors"];
 
 function getComputerChoice() {
-  const answer = Math.floor(Math.random() * guess.length);
-  return guess[answer];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
 }
 
-function playRound() {
-  const playerSelection = prompt("Rock, Paper, Scissors").toLowerCase();
-  const computerSelection = getComputerChoice();
+function playRound(playerChoice) {
+  const computerChoice = getComputerChoice();
 
-  if (playerSelection === computerSelection) {
+  if (playerChoice === computerChoice) {
     return "It's a tie!";
   } else if (
-    (playerSelection === "rock" && computerSelection === "scissors") ||
-    (playerSelection === "scissors" && computerSelection === "paper") ||
-    (playerSelection === "paper" && computerSelection === "rock")
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+    (playerChoice === "scissors" && computerChoice === "paper") ||
+    (playerChoice === "paper" && computerChoice === "rock")
   ) {
     return "Player wins!";
   } else {
@@ -22,8 +21,12 @@ function playRound() {
   }
 }
 
-function game() {
-  for (var i = 1; i < 6; i++) playRound(i);
-}
+const buttons = document.querySelectorAll("button");
 
-game();
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const playerChoice = button.id;
+    const result = playRound(playerChoice);
+    document.getElementById("result").textContent = result;
+  });
+});
